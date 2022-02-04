@@ -18,15 +18,15 @@ defaults:
 jobs:
   # This workflow contains a single job called "build"
   build:
-    
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
-      - name: Build container!
-        uses: actions/setup-node@v2
+      - name: Clone repository
+        uses: actions/checkout@v2
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
-      - run: |
-          npm i
-          npm run build
+          node-version: 12.x
+      - name: Install dependencies
+        run: npm install
+      - name: Generate build
+        run: npm run build
