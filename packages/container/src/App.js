@@ -1,8 +1,14 @@
+import { StylesProvider } from '@material-ui/core/styles';
 import React from 'react';
 import MarketingApp from './components/MarketingApp';
 
-export default () => <>
-  <h1>Hi there!</h1>
-  <hr></hr>
-  <MarketingApp />
-</>
+const genereratedClassName = createGenerateClassName({
+  productionPrefix: 'ctn'
+})
+
+export default () => (
+  <StylesProvider generateClassName={genereratedClassName}>
+    <Header />
+    <MarketingApp />
+  </StylesProvider>
+)
